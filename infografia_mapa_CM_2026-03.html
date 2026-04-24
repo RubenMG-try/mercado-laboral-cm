@@ -28,7 +28,17 @@ select:focus{outline:none;border-color:#9A8A7C;box-shadow:0 0 0 2px #E2D8CE}
 #map{flex:1;min-width:0}
 
 /* Sidebar */
-.side{width:270px;flex-shrink:0;background:#FAF7F3;border-left:1px solid #D4CAC0;display:flex;flex-direction:column;overflow:hidden}
+.side{width:270px;flex-shrink:0;background:#FAF7F3;border-left:1px solid #D4CAC0;display:flex;flex-direction:column;overflow:hidden;transition:transform .25s ease}
+
+/* FAB ranking (solo móvil) */
+.side-fab{display:none;position:absolute;bottom:20px;right:20px;z-index:1000;background:#3A322C;color:#F5F1EB;border:none;width:50px;height:50px;border-radius:50%;font-size:1.4rem;cursor:pointer;box-shadow:0 3px 12px rgba(0,0,0,.35);align-items:center;justify-content:center}
+
+@media(max-width:700px){
+  .body{position:relative}
+  .side-fab{display:flex}
+  .side{position:absolute;right:0;top:0;bottom:0;z-index:999;width:85vw;max-width:300px}
+  .side.collapsed{transform:translateX(100%)}
+}
 
 /* Leyenda */
 .leg{padding:14px 16px;border-bottom:1px solid #E8E0D8}
@@ -102,7 +112,8 @@ select:focus{outline:none;border-color:#9A8A7C;box-shadow:0 0 0 2px #E2D8CE}
 
 <div class="body">
   <div id="map"></div>
-  <div class="side">
+  <button class="side-fab" id="sideFab" onclick="toggleSide()">&#9776;</button>
+  <div class="side collapsed" id="sidePanel">
     <div class="leg">
       <div class="leg-ttl">Escala de color</div>
       <div class="leg-bar" id="legBar"></div>
@@ -290,6 +301,19 @@ function highlightRank(nombre) {
       c.setStyle({weight:1.5, color:'#FAF7F3'});
     }
   });
+}
+
+// ── Sidebar toggle (móvil) ────────────────────────────────────────────────────
+function toggleSide() {
+  const side = document.getElementById('sidePanel');
+  const fab  = document.getElementById('sideFab');
+  side.classList.toggle('collapsed');
+  fab.innerHTML = side.classList.contains('collapsed') ? '&#9776;' : '&#10005;';
+}
+
+// En escritorio, siempre visible
+if (window.innerWidth > 700) {
+  document.getElementById('sidePanel').classList.remove('collapsed');
 }
 
 // ── Init ──────────────────────────────────────────────────────────────────────
