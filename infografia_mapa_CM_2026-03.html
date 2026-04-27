@@ -11,7 +11,12 @@
 body{font-family:'Calibri','Segoe UI',Arial,sans-serif;background:#F5F0E8;color:#1A1A18;height:100vh;display:flex;flex-direction:column;overflow:hidden}
 
 /* Header */
-.hdr{background:#1A1A18;color:#F5F0E8;padding:14px 24px;display:flex;align-items:center;gap:20px;flex-shrink:0;border-bottom:4px solid #D4A82A}
+.hdr{background:#1A1A18;color:#F5F0E8;padding:12px 24px;display:flex;align-items:center;gap:0;flex-shrink:0;border-bottom:4px solid #D4A82A}
+.hdr-logo{display:flex;align-items:center;flex-shrink:0;padding-right:20px}
+.hdr-logo-text{font-family:'Impact','Arial Black','Calibri',Arial,sans-serif;font-size:1.7rem;font-weight:900;letter-spacing:.01em;line-height:1}
+.hdr-logo-territo{color:#F5F0E8}
+.hdr-logo-lab{color:#D4A82A}
+.hdr-sep{width:1px;height:38px;background:#D4A82A;flex-shrink:0;margin:0 20px}
 .hdr-title{font-size:1.05rem;font-weight:700;letter-spacing:.04em;font-family:'Calibri Light','Segoe UI Light',Arial,sans-serif}
 .hdr-sub{font-size:.72rem;color:#C8B89A;margin-top:2px}
 
@@ -72,6 +77,10 @@ select:focus{outline:none;border-color:#D4A82A;box-shadow:0 0 0 2px rgba(212,168
 <body>
 
 <div class="hdr">
+  <div class="hdr-logo">
+    <div class="hdr-logo-text"><span class="hdr-logo-territo">TERRITO</span><span class="hdr-logo-lab">LAB</span></div>
+  </div>
+  <div class="hdr-sep"></div>
   <div>
     <div class="hdr-title">Mercado Laboral &mdash; Comunidad de Madrid</div>
     <div class="hdr-sub">Datos mensuales SEPE &middot; Marzo 2026 &middot; 24 municipios &gt;45.000 hab.</div>
